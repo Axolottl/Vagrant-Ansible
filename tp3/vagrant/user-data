@@ -1,0 +1,12 @@
+#cloud-config
+users:
+  - name: it4
+    gecos: Super adminsys
+    primary_group: it4
+    groups: wheel
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    passwd: $6$XURsDlAF20pG3D3W$8a9/8WMPYRpGJdCujP/WiLSiojYfObsxfLpYokoISUDO0LqkaNd6bp8tnqow29aNl1oXvgU4CNK.1q76WNfAs/
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDIgL4/yCcUJaCyl0i73hmQ1zvMZYrIQrNr0zCIOKYTG/9RxCU010hm8vzSBykxy9hRdbR4d84CITl4BEuQYMvi5ESsiUzd22357N+u5W4BNwv+eNV3gQKF0utXpK1ZwmVPSZSh47TnisbMhCMmMIKFeCN8T2iiZQhYJ0c+Q2xUcfzBLPJkV/mZUa6U9Nra7NUR3qMNc4F8XNMnRz0hGdstjeteUhSb1SEgxUcl+GhCmySiyS4fs+YlK3xy9H2ZZO5t6IqywjJ9oMG9lnwvdA6hLpMTZvWSMWsk4zWLj+I96JvWI1msYkjrhg97NvBsaNGVZxwULgGzNY8wI3KO9ahKM2RfOEmBlc02iaf8laghqFhlfY6lBhN5gpUc5KDlQnZoqVQpjaVhPTRO6hQqNQ+olOxk/S65yY0BypatOL8r5e4SSgI9gO5DJr+zvZddp21Bqgs/2Jc79IP31XA95CdfPIZLCtQaCJE9XS0toLE6q6UneEGplVhgtmq8xWK3jaM= dev@Smarts-MacBook-Air.local

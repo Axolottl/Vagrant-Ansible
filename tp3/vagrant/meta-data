@@ -1,0 +1,2 @@
+instance-id: first-cloud-init
+local-hostname: tp3.gestion.conf
