@@ -1,0 +1,9 @@
+Host 10.1.1.*
+  User <VOTRE_USER>
+  IdentityFile <VOTRE_CLE_PRIVEE>
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentitiesOnly yes
+  LogLevel FATAL
+
