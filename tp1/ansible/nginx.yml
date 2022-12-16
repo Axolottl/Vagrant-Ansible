@@ -1,0 +1,33 @@
+
+---
+- name: Setup Nginx
+  ansible.builtin.import_playbook: first.yml
+
+- name: Deploy Nginx and server
+  hosts: tp1
+  become: true
+  
+  tasks:
+  - name: Create private key (RSA, 4096 bits)
+    community.crypto.openssl_privatekey:
+      path: /etc/pki/tls/private/openssl.key
+
+  - name: Generate a Self Signed OpenSSL certificate
+    community.crypto.x509_certificate:
+      path: /etc/pki/tls/certs/certificate.crt
+      privatekey_path: /etc/pki/tls/private/openssl.key
+      provider: selfsigned
+
+  - name: Create web path if it does not exist
+    ansible.builtin.file:
+      path: /var/www/tp1_site/
+      state: directory
+      mode: '0755'
+
+  - name: Insert Index Page
+    template:
+      src: index.html.j2
+      dest: /var/www/tp1_site/index.html
+
+- name: Open port 443/TCP
+  ansible.builtin.import_playbook: open_port.yml

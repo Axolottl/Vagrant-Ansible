@@ -1,6 +1,6 @@
 Host 10.1.1.*
-  User <VOTRE_USER>
-  IdentityFile <VOTRE_CLE_PRIVEE>
+  User "vagrant"
+  IdentityFile "/Users/dev/.ssh/id_rsa"
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   PasswordAuthentication no

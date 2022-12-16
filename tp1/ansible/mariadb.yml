@@ -1,0 +1,41 @@
+---
+- name: Install and setup MariaDB
+  hosts: tp1
+  become: true
+  vars:
+    mysql_root_password: "eùyahsl3é$"
+
+  tasks:
+    - name: install mariadb
+      yum:
+        name:
+          - mariadb-server
+          - python3-PyMySQL
+        state: latest
+
+    - name: start mariadb
+      service:
+        name: mariadb
+        enabled: true
+        state: started
+
+    - name: Create a new database
+      community.mysql.mysql_db:
+        name: test
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Creating new mysql user
+      mysql_user:
+        name: test
+        password: "{{ mysql_root_password }}"
+        priv: '*.*:ALL,GRANT'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Removes all anonymous user accounts
+      mysql_user:
+        name: ''
+        host: localhost
+        state: absent
+        login_unix_socket: /var/lib/mysql/mysql.sock

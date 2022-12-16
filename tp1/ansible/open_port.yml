@@ -1,0 +1,26 @@
+---
+- name: Open port 443/TCP
+  hosts: tp1
+  become: true
+
+  tasks:
+  - name: Install firewalld
+    yum:
+      name: firewalld
+      state: latest
+    notify:
+      - start firewalld
+  - name: start firewalld
+    service:
+      name: firewalld
+      state: started
+      enabled: yes
+    become: yes
+  - name: enable 443
+    firewalld:
+      zone: work
+      port: 443/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+    become: yes
