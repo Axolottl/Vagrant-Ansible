@@ -10,8 +10,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "rocky-ynov"
 
-  config.vm.define "git reflog
-  node1.tp2.lab" do |first|
+  config.vm.define "node1.tp2.lab" do |first|
     first.vm.network "private_network", ip: "10.2.1.11"
   end
 
